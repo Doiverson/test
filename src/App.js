@@ -1,25 +1,36 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Weather from "./weather";
+import Titles from "./titles";
+import Form from "./form";
+
+
 
 class App extends Component {
-  render() {
+
+    state = {
+        temperature: undefined,
+        city: undefined,
+        country: undefined,
+        humidity: undefined,
+        description: undefined,
+        error: undefined
+    }
+
+    getWeather = async (e) =>{
+        const city = e.target.elements.city.value;
+        const country = e.target.elements.country.value;
+        e.preventDefault();
+        const api_call = await fetch(`api.openweathermap.org/data/2.5/weather?q=${city},${country}`);
+        const response = await api_call.json();
+        console.log(response);
+    }
+
+    render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div>
+        <Titles/>
+        <Form loadWeather={this.getWeather} />
+        <Weather/>
       </div>
     );
   }

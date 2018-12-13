@@ -24,15 +24,21 @@ class App extends Component {
         const response = await api_call.json();
         console.log(response);
 
-        this.setState({
-            temperature: response.main.temp,
-            city: response.name,
-            country: response.sys.country,
-            humidity: response.main.humidity,
-            description: response.weather[0].description,
-            error: ""
-            }
-        )
+        if(city && country) {
+            this.setState({
+                    temperature: response.main.temp,
+                    city: response.name,
+                    country: response.sys.country,
+                    humidity: response.main.humidity,
+                    description: response.weather[0].description,
+                    error: ""
+                }
+            )
+        } else {
+            this.setState({
+            error: "Please enter the values..."
+            })
+        }
     }
 
     render() {

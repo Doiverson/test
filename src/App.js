@@ -8,6 +8,7 @@ const Api_Key = "1aaee2d1a170d4b12b65ba2f629dfe16";
 class App extends Component {
 
     state = {
+        icon: undefined,
         temperature: undefined,
         city: undefined,
         country: undefined,
@@ -26,6 +27,7 @@ class App extends Component {
 
         if(city && country) {
             this.setState({
+                    icon: response.weather[0].icon,
                     temperature: response.main.temp,
                     city: response.name,
                     country: response.sys.country,
@@ -43,26 +45,23 @@ class App extends Component {
 
     render() {
     return (
-      <div>
-          <div className="wrapper">
-              <div className="main">
-                  <div className="container">
-                      <div className="row">
-                          <div className="col title-container">
-                            <Titles />
-                          </div>
-                          <div className="col form-container">
-                              <Form loadWeather={this.getWeather} />
-                              <Weather
-                                temperature={this.state.temperature}
-                                city={this.state.city}
-                                country={this.state.country}
-                                humidity={this.state.humidity}
-                                description={this.state.description}
-                                error={this.state.error}
-                            />
-                          </div>
-                      </div>
+      <div className="main">
+          <div className="container">
+              <div className="row">
+                  <div className="col title-container">
+                    <Titles />
+                  </div>
+                  <div className="col form-container">
+                      <Form loadWeather={this.getWeather} />
+                      <Weather
+                        icon={this.state.icon}
+                        temperature={this.state.temperature}
+                        city={this.state.city}
+                        country={this.state.country}
+                        humidity={this.state.humidity}
+                        description={this.state.description}
+                        error={this.state.error}
+                    />
                   </div>
               </div>
           </div>

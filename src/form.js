@@ -8,7 +8,7 @@ class For extends React.Component{
             <form onSubmit = {this.props.loadWeather}>
                 <input type="text" name="city" placeholder="City..."/>
                 <input type="text" name="country" placeholder="Country..."/>
-                <button>Get Weather</button>
+                <button className={"btn"}>Get Weather</button>
             </form>
 
         )

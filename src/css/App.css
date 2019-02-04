@@ -1,33 +1,41 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
 
-body {
-    font-family: 'Roboto Mono', monospace, serif;
+html {
+//font-size: 62.5%;
+    box-sizing: border-box;
+    height: 100%;
 }
 
-.wrapper {
-    background: linear-gradient(to right, #70bef4, #066ab0);
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body {
+    font-family: 'Roboto Mono', monospace, serif;
+    height: 100%;
 }
 
 .main {
-    height: 90vh;
+    height: 100vh;
     background: #fff;
-    box-shadow: 0px 13px 40px -13px rgba(0,0,0,0.75);
     margin: 0 auto;
+}
+
+.container {
+    height: 100%;
+    display: flex;
+    align-items: center;
 }
 
 .title-container {
     height: 90vh;
-    background: url("img/hawaii.jpg") center center no-repeat;
-    background-size: cover;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     color: #ffe400;
+    padding-left: 30px;
+    padding-right: 30px;
 }
 
 .title-container__title {
@@ -47,23 +55,40 @@ body {
 }
 
 .form-container {
-    background-color: #0a2333;
     height: 90vh;
-    padding-top: 100px;
-    padding-left: 50px;
+    padding-left: 30px;
+    padding-right: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.form-container:before {
+    content: '';
+    width: 3px;
+    border: solid 2px rgba(171, 164, 163, 0.2);
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+}
+
+form {
+    text-align: center;
 }
 
 input[type="text"] {
     background-color: transparent;
     border: 0;
     border-bottom: solid 1px #f16051;
-    width: 30%;
     padding-bottom: 4px;
-    color: white;
+    color: black;
     font-weight: lighter;
     letter-spacing: 2px;
     margin-bottom: 30px;
     margin-right: 20px;
+    margin-left: 20px;
     font-size: 20px;
 }
 
@@ -72,8 +97,8 @@ input[type="text"] {
 }
 
 input:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0 30px #2c3e50 inset;
-    -webkit-text-fill-color: #fff !important;
+    -webkit-box-shadow: 0 0 0 30px white inset;
+    -webkit-text-fill-color: black !important;
 }
 
 button {
@@ -93,14 +118,21 @@ button:active {
     outline: none;
 }
 
+.weather__icon {
+    width: 25%;
+}
+
 .weather__info {
-    width: 60%;
+    text-align: center;
     font-size: 20px;
     font-weight: 200;
     letter-spacing: 2px;
+    padding-top: 25px;
+    transition: .5s ease;
 }
 
 .weather__key {
+    text-align: left;
     color: #f16051;
     border-bottom: solid 2px rgba(255,255,255,0.06);
     padding: 20px 0 20px 0;
@@ -112,12 +144,12 @@ button:active {
 }
 
 .weather__value {
-    color: white;
+    color: black;
     font-weight: 200;
 }
 
 .weather__error {
-    color: white;
+    color: black;
     font-size: 20px;
     letter-spacing: 1px;
     font-weight: 200;
